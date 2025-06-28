@@ -1,5 +1,10 @@
 class Solution(object):
     def minSubArrayLen(self, target, nums):
+        """
+        :type target: int
+        :type nums: List[int]
+        :rtype: int
+        """
         shortest = float("inf")
         L = 0
         total = 0
