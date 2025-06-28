@@ -10,16 +10,9 @@ class Solution(object):
         R = len(arr) - 1
 
         while (R - L + 1 > k):
-            if (self.isCloser(arr[L], arr[R], x)):
+            if (abs(arr[L] - x) <= abs(arr[R] - x)):
                 R -= 1
             else:
                 L += 1
         return arr[L:R + 1]
 
-    def isCloser(self, a, b, x):
-        if (abs(a - x) == abs(b - x)):
-            return True if a < b else False
-        elif (abs(a - x) < abs(b - x)):
-            return True
-        else:
-            return False
