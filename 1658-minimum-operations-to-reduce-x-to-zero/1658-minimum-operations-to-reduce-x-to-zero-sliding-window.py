@@ -17,7 +17,6 @@ class Solution(object):
                 cur -= nums[L]
                 L += 1
             if cur == target:
-                print(L, R)
                 width = R - L + 1
                 res = min(res, len(nums) - width)
         
