@@ -4,20 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        n = len(nums)
-
         nums.sort()
         L = 0
+        n = len(nums)
         R = n - 1
 
-        res = [-1] * n
-        i = 0
-        while res[-1] == -1:
-            res[i] = nums[L]
+        res = list()
+        while (len(res) < n):
+            res.append(nums[L])
             L += 1
-            i += 1
-            if res[-1] == -1:
-                res[i] = nums[R]
+            if (len(res) != n):
+                res.append(nums[R])
                 R -= 1
-                i += 1
         return res
