@@ -5,25 +5,16 @@ class Solution(object):
         :type pivot: int
         :rtype: List[int]
         """
-        res = [0] * len(nums)
+        start = list()
+        middle = list() 
+        end = list()
 
-        p = 0
         for i in range(len(nums)):
             if nums[i] < pivot:
-                res[p] = nums[i]
-                p += 1
+                start.append(nums[i])
+            elif nums[i] > pivot:
+                end.append(nums[i])
+            else:
+                middle.append(nums[i])
         
-        for i in range(len(nums)):
-            if nums[i] == pivot:
-                res[p] = nums[i]
-                p += 1
-        
-        for i in range(len(nums)):
-            if nums[i] > pivot:
-                res[p] = nums[i]
-                p += 1
-        
-        for i in range(len(nums)):
-            nums[i] = res[i]
-        
-        return nums
+        return start + middle + end
