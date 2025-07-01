@@ -6,17 +6,19 @@ class Solution(object):
         """
         stack = deque()
         for c in s:
-            if c in ["(", "{", "["]:
-                stack.append(c)
+            if c == "(":
+                stack.append(1)
+            elif c == "{":
+                stack.append(2)
+            elif c == "[":
+                stack.append(3)
             else:
                 if not stack:
                     return False
-                if c == ")" and stack.pop() != "(":
+                elif c == ")" and stack.pop() != 1:
                         return False
-                if c == "}" and stack.pop() != "{":
+                elif c == "}" and stack.pop() != 2:
                         return False
-                if c == "]" and stack.pop() != "[":
+                elif c == "]" and stack.pop() != 3:
                         return False
         return not stack
-
-
