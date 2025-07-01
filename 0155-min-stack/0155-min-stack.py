@@ -2,26 +2,23 @@ class MinStack(object):
 
     def __init__(self):
         self.nodes = list()
-        self.tailIndex = -1
 
     def push(self, val):
         """
         :type val: int
         :rtype: None
         """
-        if self.tailIndex == -1:
+        if not self.nodes:
             minv = val
         else:
-            minv = min(val, self.nodes[self.tailIndex].minv)
+            minv = min(val, self.nodes[-1].minv)
         self.nodes.append(Node(val, minv))
-        self.tailIndex += 1
 
     def pop(self):
         """
         :rtype: None
         """
         self.nodes.pop()
-        self.tailIndex -= 1
 
     def top(self):
         """
