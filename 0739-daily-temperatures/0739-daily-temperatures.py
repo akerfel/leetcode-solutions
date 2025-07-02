@@ -9,8 +9,8 @@ class Solution(object):
 
         for i, t in enumerate(temperatures):
             while stack and stack[-1][1] < t:
-                pop = stack.pop()
-                res[pop[0]] = i - pop[0]
+                index, temp = stack.pop()
+                res[index] = i - index
             stack.append((i, t))
         
         return res
