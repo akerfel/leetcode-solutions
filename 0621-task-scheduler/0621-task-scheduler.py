@@ -15,7 +15,6 @@ class Solution:
                 popped = heapq.heappop(heap)
                 lastUsed = popped[2]
                 if interval - lastUsed > n:
-                    idle = False 
                     count = -1 * popped[0]
                     if count > 1:
                         updated = (-(count - 1), popped[1], interval)
