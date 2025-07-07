@@ -3,21 +3,21 @@
 # obj.insert(word)
 # param_2 = obj.search(word)
 # param_3 = obj.startsWith(prefix)
-class Trie:
 
-    class Node:
-        def __init__(self):
-            self.children = {} # {character, node}
-            self.isWord = False
-
+class Node:
     def __init__(self):
-        self.root = self.Node()
+        self.children = {} # {character, node}
+        self.isWord = False
+
+class Trie:
+    def __init__(self):
+        self.root = Node()
 
     def insert(self, word: str) -> None:
         cur = self.root
         for c in word:
             if c not in cur.children:
-                cur.children[c] = self.Node()
+                cur.children[c] = Node()
             cur = cur.children[c]
         cur.isWord = True
 
