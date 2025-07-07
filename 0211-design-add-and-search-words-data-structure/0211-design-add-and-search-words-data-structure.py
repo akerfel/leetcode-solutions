@@ -16,11 +16,6 @@ class WordDictionary:
             cur = cur.children[c]
         cur.isWord = True
 
-    # added: hello
-    # search h.llo
-    # ok: hallo
-    # ok: hbllo
-
     def search(self, word) -> bool:
         return self.searchHelper(word, self.root)
         
