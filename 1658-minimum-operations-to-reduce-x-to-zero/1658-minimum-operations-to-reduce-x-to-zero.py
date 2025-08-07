@@ -5,29 +5,19 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
+         # find widest window which sums exactly to target
+        target = sum(nums) - x
+
         res = float("inf")
-        prefixToIndex = dict()
-        prefix = 0
-        prefixToIndex[0] = -1
-        for i in range(len(nums)):
-            prefix += nums[i]
-            if not prefix in prefixToIndex:
-                prefixToIndex[prefix] = i
-                if prefix == x:
-                    res = min(res, i + 1)
-
-        suffix = 0
-        for i in range(len(nums) - 1, -1, -1):
-            suffix += nums[i]
-            needed = x - suffix
-            if needed in prefixToIndex:
-                prefixIndex = prefixToIndex[needed]
-                if prefixIndex < i:
-                    prefixLength = prefixIndex + 1
-                    suffixLength = len(nums) - i
-                    res = min(res, prefixLength + suffixLength)
-                else:
-                    return -1
-
-        return -1 if res == float("inf") else res
+        L = 0
+        cur = 0
+        for R in range(len(nums)):
+            cur += nums[R]
+            while cur > target and L <= R:
+                cur -= nums[L]
+                L += 1
+            if cur == target:
+                width = R - L + 1
+                res = min(res, len(nums) - width)
         
+        return -1 if res == float("inf") else res
